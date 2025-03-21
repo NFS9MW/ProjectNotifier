@@ -52,7 +52,7 @@ object DingTalkBotManager {
                 )
             }
             val rsp = client.execute(req, CUSTOM_ROBOT_TOKEN)
-            println(rsp.body)
+            println("Markdown消息返回: ${rsp.body}")
 
         } catch (e: ApiException) {
             e.printStackTrace()
@@ -71,7 +71,7 @@ object DingTalkBotManager {
     fun sendAt(){
         try {
             val timestamp = System.currentTimeMillis()
-            println(timestamp)
+            //println(timestamp)
             val stringToSign = "$timestamp\n$SECRET"
             val mac = Mac.getInstance("HmacSHA256").apply {
                 init(SecretKeySpec(SECRET.toByteArray(Charsets.UTF_8), "HmacSHA256"))
@@ -81,7 +81,7 @@ object DingTalkBotManager {
                 Base64.getEncoder().encodeToString(signData),
                 Charsets.UTF_8.name()
             )
-            println("Debug Sign: $sign")
+            //println("Debug Sign: $sign")
             val client: DingTalkClient = DefaultDingTalkClient(
                 "https://oapi.dingtalk.com/robot/send?sign=$sign&timestamp=$timestamp"
             )
@@ -100,7 +100,7 @@ object DingTalkBotManager {
                 )
             }
             val rsp = client.execute(req, CUSTOM_ROBOT_TOKEN)
-            println(rsp.body)
+            println("@人员返回: ${rsp.body}")
 
         } catch (e: ApiException) {
             e.printStackTrace()

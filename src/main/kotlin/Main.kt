@@ -3,15 +3,17 @@ import manager.ExcelManager
 import java.time.LocalDate
 
 fun main(){
+    println("程序开始执行")
+
     ExcelManager.init()
     ExcelManager.readFromProjectList()
     ExcelManager.readFromFinishedList()
     ExcelManager.readFromMemberList()
 
     for (project in ExcelManager.projectList) {
-        println("程序开始执行")
-
         if (!project.isMessageSend && project.time == LocalDate.now()) {
+            println("\n发送项目: ${project.name}")
+
             // [1] 发送 Markdown 消息
             DingTalkBotManager.name = project.name
             DingTalkBotManager.message = "## ${project.name}\n##### ${project.message}"
@@ -44,5 +46,5 @@ fun main(){
     ExcelManager.storeToProjectSheet()
     ExcelManager.storeToFinishedSheet()
 
-    println("程序执行完毕")
+    println("\n程序执行完毕")
 }
