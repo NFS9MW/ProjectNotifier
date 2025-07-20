@@ -13,8 +13,8 @@ import java.security.InvalidKeyException
 import java.security.NoSuchAlgorithmException
 
 object DingTalkBotManager {
-    private const val CUSTOM_ROBOT_TOKEN = "94226b87fa780d6b37de71ef4ef8e40738710fae0b7a8ae538ba36e0649f538d"
-    private const val SECRET = "SECc0faa607e7b1edc4971f1c17fc6092d95df3d18b5dd7fa5bf6a8e53e591090c2"
+    private const val CUSTOM_ROBOT_TOKEN = "填写自己的TOKEN"
+    private const val SECRET = "填写自己的SECRET"
 
     var userIds: List<String> = emptyList() //需要@的用户ID
     var name:String="" //需发送的标题
